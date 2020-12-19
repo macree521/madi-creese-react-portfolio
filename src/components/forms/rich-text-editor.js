@@ -19,11 +19,11 @@ export default class RichTextEditor extends Component {
 
     UNSAFE_componentWillMount() {
         if (this.props.editMode && this.props.contentToEdit) {
-            this.setState({ editorState });
             const blocksFromHtml = htmlToDraft(this.props.contentToEdit);
             const { contentBlocks, entityMap } = blocksFromHtml;
             const contentState = ContentState.createFromBlockArray(contentBlocks, entityMap);
             const editorState = EditorState.createWithContent(contentState);
+            this.setState({ editorState });
         }
     }
 
